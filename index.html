@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/jquery-3.2.1.min.js"></script>
+    
+    <style>
+      .success-alert,
+      .danger-alert,
+      .secondary-alert,
+      .neutral-alert {
+        display: inline-block;
+        padding: 10px;
+        min-width: 150px;
+        font-size: 14px;
+        text-transform: none;
+        text-align: left;
+        line-height: 24px;
+        position: fixed;
+        bottom: 15px;
+        right: 10px;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        transition: 0.6s ease;
+        -webkit-transition: 0.6s ease;
+        -moz-transition: 0.6s ease;
+        -ms-transition: 0.6s sec;
+        -o-transition: 0.6s ease;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      .success-alert {
+        background-color: #0e082c;
+        color: whitesmoke;
+      }
+
+      .primary-alert {
+        background-color: var(--primary-color);
+        color: var(--universal-color);
+      }
+
+      .secondary-alert {
+        background-color: var(--secondary-color);
+        color: var(--universal-color);
+      }
+    </style>
+    <script src="js/spop.min.js"></script>
+    <script src="js/custom.js"></script>
+  </head>
+  <body>
+    <script>
+     
+      function alertMessages(type, message) {
+        type =
+          typeof type == "string" &&
+          ["success", "danger", "neutral"].indexOf(type) > -1
+            ? type
+            : "success";
+        message =
+          typeof message == "string" && message.trim().length > 0
+            ? message.trim()
+            : "No message";
+
+        //alert template
+        let alertTemplate = document.createElement("div");
+        alertTemplate.classList.add(`${type}-alert`);
+        alertTemplate.innerHTML = `<p>${message}</p>`;
+
+        if (type && message) {
+          //check alert type
+          document.querySelector("body").append(alertTemplate);
+        }
+        setTimeout(() => {
+          document.querySelector("body").removeChild(alertTemplate);
+        }, 5000);
+
+        
+      }
+
+      let toasts = [
+          {
+            type: "success",
+            message: "$234 <br> INVESTED BY <br> James Roadd",
+          },
+          {
+            type: "success",
+            message: "$532 <br> WITHDRAWN BY <br> Felix Grace",
+          },
+          {
+            type: "success",
+            message: "$1234 <br> WITHDRAWN BY <br> Juan Javier",
+          },
+          {
+            type: "success",
+            message: "$934 <br> INVESTED BY <br> Rodds Kenan",
+          },
+          {
+            type: "success",
+            message: "$500 <br> INVESTED BY <br> Janie Cameron",
+          },
+          {
+            type: "success",
+            message: "$1234 <br> WITHDRAWN BY <br> Anthony Pardew",
+          },
+        ]
+        let i = 0;
+        setInterval(() => {
+          alertMessages(toasts[i].type, toasts[i].message);
+          i++;
+          if (i == toasts.length) {
+            i = 0
+          }
+        }, 13000);
+     
+    </script>
+   
+    <script href="js/jquery-3.2.1.min.js"></script>
+    <script href="js/popper.min.js"></script>
+   
+  </body>
+</html>
